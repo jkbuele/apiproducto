@@ -20,5 +20,4 @@ class ProductoController {
         return productoService.list()
     }
 
-
 }
