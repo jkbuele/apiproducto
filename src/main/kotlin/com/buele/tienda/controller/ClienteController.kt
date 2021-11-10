@@ -25,5 +25,24 @@ class ClienteController {
         return clienteService.save(cliente)
     }
 
+    @PutMapping
+    fun update (@RequestBody cliente: Cliente): Cliente{
+        return clienteService.update(cliente)
+    }
+
+    @PatchMapping
+    fun updateDescription (@RequestBody cliente: Cliente):Cliente{
+        return clienteService.updateDescription(cliente)
+    }
+
+    @DeleteMapping("/delete/{id}")
+    fun delete (@PathVariable("id") id: Long):Boolean{
+        return clienteService.delete(id)
+    }
+
+
+
+
+
 
 }

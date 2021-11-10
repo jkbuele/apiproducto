@@ -4,6 +4,7 @@ import com.buele.tienda.model.Cliente
 import com.buele.tienda.repository.ClienteRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class ClienteService {
@@ -18,5 +19,25 @@ class ClienteService {
 
     fun save (cliente: Cliente): Cliente{
         return clienteRepository.save(cliente)
+    }
+
+    fun update(cliente: Cliente): Cliente {
+        return clienteRepository.save(cliente)
+    }
+
+
+
+
+    fun updateDescription (cliente: Cliente): Cliente {
+        val response = clienteRepository.findById(cliente.id) ?: throw Exception()
+        response.apply {
+            this.description=cliente.description
+        }
+        return clienteRepository.save(response)
+    }
+
+    fun delete (id:Long): Boolean{
+        clienteRepository.deleteById(id)
+        return true
     }
 }
